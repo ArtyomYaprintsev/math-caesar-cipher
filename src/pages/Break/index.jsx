@@ -19,17 +19,19 @@ const BreakPage = () => {
 
   return (
     <main>
-      <h3>Взломать шифр</h3>
-
       <div className='description'>
+        <h3>Взломать шифр</h3>
         <p>
           Взлом работает только для шифров, зашированных методов "Шифр Цезаря",
           взлом производится при помощи метода наименьших квадратов.
         </p>
 
         <ul>
-          <li>Все небуквенные символы будут игнорироваться</li>
-          <li>Шифр может быть составлен только из русских символов</li>
+          <li>Символы, не относящиеся к русскому, будут игнорироваться</li>
+          <li>
+            Шифр может быть составлен только из русских символов в верхнем
+            регистре
+          </li>
         </ul>
       </div>
 
@@ -42,22 +44,16 @@ const BreakPage = () => {
             {...register("cipher", {
               required: "Шифр - обязательное поле",
               validate: {
-                onlyOneAlphabet: (value) => {
-                  const isContainLatin = /[A-Z]/i.test(value);
-                  const isContainRussian = /[А-Я]/i.test(value);
-
-                  if (isContainLatin && isContainRussian) {
-                    return "Шифр может включать только русские или только английские символы";
-                  }
-                },
-                isContainDigits: (value) => {
-                  if (/[0-9]/.test(value)) {
-                    return "Шифр не должен содержать числа, заменить на буквенный формат";
+                onlyAvailableChars: (value) => {
+                  if (/[^А-ЯЁ\s-]/.test(value)) {
+                    return "Шифр должен состоять заглавных букв русского алфавита, пробела и `-` символа";
                   }
                 },
               },
             })}
           ></textarea>
+
+          {errors.cipher && <span role='alert'>{errors.cipher.message}</span>}
         </div>
 
         <Result result={broken.brokenText}>
