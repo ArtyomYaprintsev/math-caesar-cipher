@@ -30,7 +30,7 @@ export const shiftLetter = (letter, shift, alphabet) => {
 export const prepareText = (text) => {
   return text
     .toUpperCase()
-    .replaceAll("Ё", "$1E")
+    .replaceAll("Ё", "$1Е")
     .replace(/[^A-ZА-Я]/g, "");
 };
 
