@@ -6,7 +6,10 @@ import Result from "../../components/Result";
 import { breakCipher } from "../../utils/breakCipher";
 
 const BreakPage = () => {
-  const [broken, setBroken] = useState("");
+  const [broken, setBroken] = useState({
+    shift: 0,
+    brokenText: null,
+  });
 
   const {
     register,
@@ -57,7 +60,13 @@ const BreakPage = () => {
           ></textarea>
         </div>
 
-        <Result result={broken} />
+        <Result result={broken.brokenText}>
+          <span>
+            {`Сдвиг взломанного сообщения: ${
+              broken.brokenText ? broken.shift : "Неизвестно"
+            }`}
+          </span>
+        </Result>
 
         <button type='submit'>Взломать</button>
       </form>

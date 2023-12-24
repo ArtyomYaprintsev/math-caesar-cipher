@@ -56,9 +56,12 @@ export const breakCipher = (cipher) => {
   const preparedText = prepareText(cipher);
   const shift = findShift(preparedText);
 
-  return formatText(
-    Array.from(preparedText)
-      .map((letter) => shiftLetter(letter, -shift, russianAlphabet))
-      .join("")
-  );
+  return {
+    shift,
+    brokenText: formatText(
+      Array.from(preparedText)
+        .map((letter) => shiftLetter(letter, -shift, russianAlphabet))
+        .join("")
+    ),
+  };
 };
