@@ -1,20 +1,4 @@
-import { Alphabet, latinAlphabet, russianAlphabet } from "../source/alphabet";
-
-const detectLanguage = (text) => {
-  // Only for UPPER case text
-  const isContainLatin = /[A-Z]/.test(text);
-  const isContainRussian = /[А-Я]/.test(text);
-
-  if (isContainLatin && isContainRussian) {
-    throw new Error("Text can not to contain latin and russian characters.");
-  }
-
-  if (isContainLatin) {
-    return latinAlphabet;
-  }
-
-  return russianAlphabet;
-};
+import { Alphabet, Dictionary } from "../source/alphabet";
 
 /**
  *
@@ -35,10 +19,12 @@ export const prepareText = (text) => {
 };
 
 export const shiftText = (text, shift) => {
-  const alphabet = detectLanguage(text);
-
   return Array.from(text)
-    .map((letter) => shiftLetter(letter, shift, alphabet))
+    .map((letter) => {
+      const alphabet = Dictionary.detectLetterAlphabet(letter);
+      if (!alphabet) return "";
+      return shiftLetter(letter, shift, alphabet);
+    })
     .join("");
 };
 

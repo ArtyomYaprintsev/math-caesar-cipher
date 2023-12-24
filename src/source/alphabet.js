@@ -36,3 +36,15 @@ export const latinAlphabet = new Alphabet("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
 // `Ё` letter is removed
 export const russianAlphabet = new Alphabet("АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ");
+
+export const Dictionary = {
+  alphabets: [latinAlphabet, russianAlphabet],
+
+  detectLetterAlphabet(letter) {
+    for (const alphabet of this.alphabets) {
+      if (alphabet.getIndexByChar(letter) !== undefined) {
+        return alphabet;
+      }
+    }
+  },
+};
