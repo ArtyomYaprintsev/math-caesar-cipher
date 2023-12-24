@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Result = ({ result = "" }) => {
+const Result = ({ result = "", children = <></> }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,6 +29,8 @@ const Result = ({ result = "" }) => {
         </button>
       </label>
       <textarea id='result' value={result} readOnly></textarea>
+
+      {children}
     </div>
   );
 };
