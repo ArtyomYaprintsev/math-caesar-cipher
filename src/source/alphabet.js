@@ -32,7 +32,7 @@ export class Alphabet {
   }
 }
 
-export const LatinAlphabet = new Alphabet("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+export const latinAlphabet = new Alphabet("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
 
-// `Ё` letters removed
-export const RussianAlphabet = new Alphabet("АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ");
+// `Ё` letter is removed
+export const russianAlphabet = new Alphabet("АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ");

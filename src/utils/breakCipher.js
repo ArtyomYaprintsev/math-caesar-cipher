@@ -1,6 +1,6 @@
 import { prepareText, formatText, shiftLetter } from "./general";
 
-import { RussianAlphabet } from "../source/alphabet";
+import { russianAlphabet } from "../source/alphabet";
 import { RUSSIAN_CHARACTER_FREQUENCY } from "../source/frequencies";
 
 const countLettersInText = (text) => {
@@ -37,13 +37,13 @@ const findShift = (text) => {
 
   // Find deviation for each shift
   const shiftDeviations = Array.from(
-    { length: RussianAlphabet.length },
+    { length: russianAlphabet.length },
     (_, index) => index
   ).map((shift) =>
-    Array.from(RussianAlphabet.alphabet).reduce((prev, letter) => {
+    Array.from(russianAlphabet.alphabet).reduce((prev, letter) => {
       const referenceFrequency = getReferenceLetterFrequency(letter);
       const shiftedLetterFrequency =
-        frequencies[shiftLetter(letter, shift, RussianAlphabet)] ?? 0;
+        frequencies[shiftLetter(letter, shift, russianAlphabet)] ?? 0;
 
       return prev + Math.pow(referenceFrequency - shiftedLetterFrequency, 2);
     }, 0)
@@ -58,7 +58,7 @@ export const breakCipher = (cipher) => {
 
   return formatText(
     Array.from(preparedText)
-      .map((letter) => shiftLetter(letter, -shift, RussianAlphabet))
+      .map((letter) => shiftLetter(letter, -shift, russianAlphabet))
       .join("")
   );
 };

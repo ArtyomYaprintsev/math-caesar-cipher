@@ -1,4 +1,4 @@
-import { Alphabet, LatinAlphabet, RussianAlphabet } from "../source/alphabet";
+import { Alphabet, latinAlphabet, russianAlphabet } from "../source/alphabet";
 
 const detectLanguage = (text) => {
   // Only for UPPER case text
@@ -10,10 +10,10 @@ const detectLanguage = (text) => {
   }
 
   if (isContainLatin) {
-    return LatinAlphabet;
+    return latinAlphabet;
   }
 
-  return RussianAlphabet;
+  return russianAlphabet;
 };
 
 /**
