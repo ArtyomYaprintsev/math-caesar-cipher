@@ -1,10 +1,13 @@
 #root {
   max-width: 800px;
   margin: 0 auto 100px;
+  $bg-color: #a7c5dc;
+  $bg-color-light: #cadeec;
+  $btn-copy-bg-color: #6593b7;
+  $btn-submit-bg-color: #6593b7;
 
   & > header {
-    background-color: #f0f0f0;
-    margin-bottom: 20px;
+    background-color: $bg-color;
     padding: 0.25em 1em;
 
     display: flex;
@@ -27,15 +30,14 @@
   }
 
   & > main {
-    h3,
     .description {
-      padding-left: 1em;
-      padding-right: 1em;
+      padding: 1em;
+      background-color: $bg-color-light;
     }
 
     form {
-      background-color: #f0f0f0;
-      padding: 0.25em 1em;
+      background-color: $bg-color;
+      padding: 20px 1em;
 
       & > div {
         margin-bottom: 20px;
@@ -72,11 +74,11 @@
     }
 
     button.copy-btn {
-      background-color: #00b400;
+      background-color: $btn-copy-bg-color;
     }
 
     button[type="submit"] {
-      background-color: #afafaf;
+      background-color: $btn-submit-bg-color;
       margin-bottom: 50px;
     }
   }
